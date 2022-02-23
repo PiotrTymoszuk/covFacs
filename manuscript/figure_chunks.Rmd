@@ -1,0 +1,48 @@
+```{r fig-consort, fig.width = 7.086614166, fig.height = 5.905511805, fig.cap = 'Analysis inclusion scheme.'}
+
+paper_figures$consort$plot
+
+```
+
+__Figure \@ref(fig:fig-consort). Analysis inclusion scheme.__
+
+
+
+```{r fig-cyto-screen, fig.width = 7.086614166, fig.height = 4.724409444, fig.cap = 'Screening of the flow cytometry features for the differences between healthy controls, moderate and severe COVID-19.'}
+
+paper_figures$cyto_screen$plot
+
+```
+
+__Figure \@ref(fig:fig-cyto-screen). Screening of the flow cytometry features for the differences between healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-subset-distribution, fig.width = 7.086614166, fig.height = 8.661417314, fig.cap = 'Monocyte subset distribution in healthy controls, moderate and severe COVID-19.'}
+
+paper_figures$subset_distribution$plot
+
+```
+
+__Figure \@ref(fig:fig-subset-distribution). Monocyte subset distribution in healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-clustering, fig.width = 7.086614166, fig.height = 5.905511805, fig.cap = 'Unsupervised clustering of healthy controls and COVID-19 individuals by myeloid leukocyte cytometry features.'}
+
+paper_figures$clustering$plot
+
+```
+
+__Figure \@ref(fig:fig-clustering). Unsupervised clustering of healthy controls and COVID-19 individuals by myeloid leukocyte cytometry features.__
+
+
+
+```{r fig-clust-inflammation, fig.width = 7.086614166, fig.height = 8.661417314, fig.cap = 'Differences in systemic inflammation status between the clusters of study participants.'}
+
+paper_figures$clust_inflammation$plot
+
+```
+
+__Figure \@ref(fig:fig-clust-inflammation). Differences in systemic inflammation status between the clusters of study participants.__
+

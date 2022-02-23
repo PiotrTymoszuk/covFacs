@@ -1,0 +1,340 @@
+---
+title: "Early alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in  hospitalized COVID-19 patients"
+subtitle: "Manuscript file"
+author: 
+  - David Haschka^[Department of Internal Medicine II, Medical University of Innsbruck, Innsbruck, Austria]
+  - Verena Petzer^[Department of Internal Medicine V, Medical University of Innsbruck, Innsbruck, Austria]
+  - Francesco Burkert^[Department of Internal Medicine II, Medical University of Innsbruck, Innsbruck, Austria]
+  - Gernot Fritsche^[Department of Internal Medicine II, Medical University of Innsbruck, Innsbruck, Austria]
+  - Sophie Wildner^[Department of Internal Medicine II, Medical University of Innsbruck, Innsbruck, Austria]
+  - Rosa Bellmann-Weiler^[Department of Internal Medicine II, Medical University of Innsbruck, Innsbruck, Austria]
+  - Dominik Wolf^[Department of Internal Medicine V, Medical University of Innsbruck, Innsbruck, Austria] 
+  - Piotr Tymoszuk^[Data Analytics As a Service Tirol, Innsbruck, Austria]
+  - Guenter Weiss^[Department of Internal Medicine II, Medical University of Innsbruck, Innsbruck, Austria] 
+
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+
+output: 
+  bookdown::word_document2:   
+    reference_docx: ms_template.docx 
+    
+bibliography: cov_biblio.bib
+csl: european-journal-of-immunology.csl
+header-includes:
+  \usepackage{longtable}
+  \usepackage{tabu}
+  \usepackage{caption}
+  \usepackage{makecell}
+  \usepackage{pdflscape}
+  \usepackage{array}
+  \usepackage{booktabs}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage{wrapfig}
+  \usepackage{multirow}
+  \usepackage[normalem]{ulem}
+  \usepackage{colortbl}
+  \usepackage{xcolor}
+  \usepackage{float} \floatplacement{figure}{H}\floatplacement{table}{H}
+  \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}}       \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+---
+
+```{r, setup, include = FALSE}
+
+library(bookdown)
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, dev = 'cairo_pdf')
+
+
+```
+
+\newpage
+
+# Abstract
+
+Severe 
+<span custom-style = 'revision'>coronavirus disease 19 (COVID-19)</span> 
+manifests with systemic immediate pro-inflammatory innate immune activation and altered iron turnover. As iron homeostasis, 
+<span custom-style = 'revision'>differentiation and function of myeloid leukocytes</span> 
+are interconnected we sought to characterize the cellularity, surface marker expression and iron transporter phenotype of neutrophils and monocyte subsets in COVID-19 patients within 72 hours from hospital admission, and how 
+<span custom-style = 'revision'>these parameters</span> 
+relate to infection severity and 
+<span custom-style = 'inflammatory response.'>these parameters</span>
+
+Between March and November 2020, blood leukocyte samples from 
+<span custom-style = 'revision'>hospitalized</span> 
+COVID-19 patients 
+<span custom-style = 'revision'>(n = 48)</span> 
+and healthy individuals 
+<span custom-style = 'revision'>(n = 7)</span> 
+were analyzed by flow cytometry enabling comparative analysis of 40 features. 
+<span custom-style = 'revision'>Inflammation driven neutrophil expansion, depletion of CD16^+^ non-classical monocytes and changes in surface expression of neutrophil and monocyte CD64 and CD86 were associated with COVID-19 severity. By unsupervised self-organizing map clustering, four patterns of innate myeloid response were identified and linked to varying levels of systemic inflammation, iron witholding and the disease course.</span> These alterations of the myeloid leukocyte compartment 
+<span custom-style = 'revision'>during acute COVID-19</span> 
+may be hallmarks of inefficient viral control, 
+<span custom-style = 'revision'>immune hyper-activation and immunosupression</span> and help at risk prediction and treatment 
+<span custom-style = 'revision'>optimization.</span>
+
+\newpage
+
+# Introduction
+
+Since late 2019, the 
+<span custom-style = 'revision'>SARS-CoV-2 pandemic</span> 
+has resulted in a global health crisis. 
+<span custom-style = 'revision'>As of February 2022, more than 420 million infections and over 5.8 million COVID-19 deaths</span> 
+were documented [@WHO2021]. 
+COVID-19 is characterized by a heterogeneous clinical manifestation and divergent courses of the disease. This ranges from asymptomatic 
+<span custom-style = 'revision'>infection, to ambulatory disease with wide-ranged flu-like and multi-organ complaints, up to severe respiratory or multi-organ condition </span>, 
+requiring hospitalization and treatment at intensive care unit [@Sahanic2021; @Oberfeld2020]. 
+Especially in the latter cases, an excessive over-stimulation of the immune system, likewise driven by an impaired immune control of viral replication leads to a ‘cytokine release syndrome’ with subsequent organ damage [@Riva2020; @Fajgenbaum2020]. Specifically, low levels of CD4^+^ and CD8^+^ cells, 
+<span custom-style = 'revision'>impaired anti-viral type I interferon response</span> 
+and polymorphisms in the genes involved in antigen presentation 
+<span custom-style = 'revision'>were associated with the risk of severe COVID-19</span> [@Ellinghaus2020;@Zhang2020a;@Zhang2020c;@VanDerMade2020]. 
+Furthermore, aberrant monocyte and neutrophil accumulation along with systemic inflammation 
+<span custom-style = 'revision'>and altered systemic iron homeostasis have been linked to the disease severity and a poor prognosis</span> 
+[@Schulte-Schrepping2020;@Bellmann-Weiler2021;@Merad2020;@Laing2020;@Lucas2020;@Christensen2021;@Silvin2020;@Penttila2021;@Vitte2020]. This pertains to the key role of 
+<span custom-style = 'revision'>myeloid leukocytes, i. e. macrophages, monocytes and neutrophils in the SARS-CoV-2 pathogen control and orchestration of the inflammatory response</span> [@Merad2020;@Mueller2021;@Trombetta2021;@Vasse2021;@Christensen2021;@Bost2021;@Silvin2020].
+
+Human blood monocytes consist of three populations: the major subset of 
+<span custom-style = 'revision'>CD14^+/high^ CD16^-/low^ classical cells and substantially</span> 
+less abundant CD14^+^ CD16^+^ intermediate and CD14^-/low^ CD16^+/high^ non-classical monocytes [@Wong2012a]. These subsets display differences in the pattern to activating stimuli and 
+<span custom-style = 'revision'>immune effector functions</span> 
+such as phagocytosis, antigen presentation and cytokine production [@Wong2012a]. Alterations in the monocyte subset 
+<span custom-style = 'revision'>distribution and surface molecule repertoire<span> 
+were observed in multiple inflammatory conditions including COVID-19 and were proposed to correlate with the disease course and prognosis [@Wong2012a;@Haschka2020;@Patel2017;@Gatti2020;@Penttila2021;@Silvin2020;@Geanon2021;@Schulte-Schrepping2020;@Trombetta2021;@Mueller2021;@Zingaropoli2021;@Christensen2021;@Vasse2021;@Lucas2020].
+
+From the clinical and immunological point of view there is an ongoing search for markers 
+<span custom-style = 'revision'>characterizing</span> the clinical course of 
+<span custom-style = 'revision'>COVID-19 as well as the protective and pathological immune response to the pathogen.</span>
+<span custom-style = 'revision'>Herein we investigated the surface molecule repertoire of myeloid innate immune cells from hospitalized COVID-19 patients by flow cytometry and linked the surface phenotype to the disease severity and patterns of systemic inflammation and iron turnover by self-organizing map clustering[@Kohonen1995; @Vesanto2000].</span>
+
+\newpage
+
+# Results
+
+## Study cohort
+
+The study was conducted between March and November 2020 and <span custom-style = 'revision'>encompassed healthy controls (n = 7)</span> and hospitalized COVID-19 patients (n = 53 enrolled) whose blood myeloid compartment was analyzed by flow cytometry within 72 hours from hospital admission <span custom-style = 'revision'>(__Supplementary Figure S1__ and __S2__)</span>. 
+<span custom-style = 'revision'>Due to insufficient flow cytometry sample quality, 5 COVID-19 participants were excluded from the analysis. Finally, samples from `r count(suppl_tables$study_dataset, sev_paper)$n[1]` healthy controls, 
+`r count(suppl_tables$study_dataset, sev_paper)$n[2]` moderate COVID-19 patients not requiring oxygen therapy during hospitalization (WHO score 3) and `r count(suppl_tables$study_dataset, sev_paper)$n[3]` severe COVID-19 individuals requiring oxygen or mechanical ventilation (WHO score 4 - 6) were available for the analysis (__Figure \@ref(fig:fig-consort)__). Among severe COVID-19 cases, `r my_count(filter(cohort$analysis_tbl, sev_paper == 'severe'), icu)$txt_lab[2]` were treated at an intensive case unit and `r my_count(filter(cohort$analysis_tbl, sev_paper == 'severe'), mortality)$txt_lab[2]` deceased during hospitalization.</span> Males constituted `r my_count(filter(cohort$analysis_tbl, sev_paper == 'moderate'), sex)$txt_lab[2]` of the moderate and `r my_count(filter(cohort$analysis_tbl, sev_paper == 'severe'), sex)$txt_lab[2]` of the severe COVID-19 group, the sex distribution difference was not significant. 
+<span custom-style = 'revision'>The median age was significantly different between the healthy controls (`r my_median(filter(cohort$analysis_tbl, sev_paper == 'healthy'), 'age')` years), moderate (`r my_median(filter(cohort$analysis_tbl, sev_paper == 'moderate'), 'age')` years) and severe COVID-19 patients (`r my_median(filter(cohort$analysis_tbl, sev_paper == 'severe'), 'age')`, years) and peaked in the severe COVID-19 group (__Supplementary Table S1__).</span>
+
+## Sustained systemic and cellular inflammatory response and iron restriction in COVID-19
+
+Systemic inflammation, as evidenced by elevated levels of interleukin-6 (IL6), C-reactive protein (CRP) and neopterin, 
+<span custom-style = 'revision'>is present in hospitalized COVID-19 individuals and was</span> linked to a poor outcome [@Laing2020; @Lucas2020; @Christensen2021; @Bellmann-Weiler2021]. In our study cohort, <span custom-style = 'revision'>blood IL6, CRP and neopterin concentrations at admission were significantly higher in patients developing severe COVID-19 than in subjects with moderate disease as described previously [@Bellmann-Weiler2021] (__Supplementary Figure S3A__).</span> 
+<span custom-style = 'revision'>These differences in inflammatory markers was paralleled by significantly reduced circulating iron concentrations, transferrin saturation and elevated circulating ferritin levels in severe COVID-19 as compared with the moderate group (__Supplementary Figure S3B__). Such phenomenon reflects iron restriction in response to a severe infection, reported for COVID-19 as well [@Weiss2018;@Yagc2021; @Christensen2021; @Brandtner2020; @Bellmann-Weiler2020; @Zhou2020].</span>
+
+## Alterations of the myeloid compartment composition and surface phenotype in healthy volunteers, moderate and severe COVID-19 patients
+
+Next, we investigated how this systemic inflammatory and <span custom-style = 'revision'>iron-restricted</span> milieu shapes the composition, <span custom-style = 'revision'>inflammatory and iron transporter protein repertoire</span> of myeloid leukocytes [@Recalcati2012; @Nairz2017]. 
+<span custom-style = 'revision'>To this end, we analyzed the whole blood monocyte and neutrophil compartment of healthy controls and COVID-19 patients within 72 hours post hospital admission with multi-color flow cytometry (__Supplementary Table S2__). Neutrophils were defined within the lymphocyte lineage-negative leukocyte population (Lin^-^: CD3^-^ CD19^-^ CD56^-^) by logical AND gating of the CD16^+^, CD11b^+^, CD62L^+^ and SSC^hi^ cells. Monocytes were identified within the non-neutrophil gate by UMAP clustering (uniform manifold approximation and projection) [@McInnes2018] in respect to CD11b, CD14, CD15, CD16, CD62L, CCR2, CX3CR1 and HLA-DR expression levels (__Supplementary Figure S1__). Classical, intermediate and non-classical monocyte subsets were defined by differences in CD14, CD16, HLA-DR, CCR2 and CX3CR1 surface levels [@Wong2012a] within the monocyte cluster cells (__Supplementary Figure S2__). Of note, the markers used to define monocyte populations: HLA-DR, CCR2 and CX3CR1 displayed similar expression differences between classical, intermediate and non-classical cells from healthy donors and COVID-19 patients. No downregulation of HLA-DR levels in classical monocytes described previously [@Schulte-Schrepping2020; @Silvin2020; @Christensen2021] could be observed in COVID-19 patients as compared with healthy controls (__Supplementary Figure S4__). In turn, neutrophil CD14 expression was found significantly different between the study groups and was the highest in moderate COVID-19 individuals.</span>
+
+<span custom-style = 'revision'>A total of `r length(cyto_clust$cyto_variables)` features could be measured with our flow cytometry pipeline including the percentages of neutrophils, classical, intermediate and non-classical monocytes as well as isotype staining-controlled surface levels of pro- and anti-inflammatory markers, iron-import protein CD71 (transferrin receptor 1) and iron exporter FPN1 (ferroportin) (__Supplementary Table S3__). Among them, `r length(cyto$kruskal_signif_features)` variables displayed significant differences between healthy controls, moderate and severe COVID-19 cell donors as determined by Kruskal-Wallis test: (1) percentage of lineage-negative cells, (2) neutrophil: lymphocyte ratio (NLR), (3) percentages of non-classical monocytes within the CD45^+^ compartment and (4) pan-monocytes, expression levels of CD64 in (5) neutrophils, (6) classical, (7) intermediate and (8) non-classical monocytes as well as surface CD86 levels in (9) classical and intermediate monocytes (10) (__Figure \@ref(fig:fig-cyto-screen)__).</span>
+
+<span custom-style = 'revision'>More specifically, an expansion of neutrophils at the cost of Lineage-positive lymphocytes could be observed in severe COVID-19 resulting in substantially higher NLR values (median: `r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'nlr')`) as compared with moderate COVID-19 (`r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'nlr')`) or healthy controls (`r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'nlr')`) (__Supplementary Figure S6__). This phenomenon was accompanied by a depletion of the non-classical monocyte subset, which was evident in moderate COVID (median % of pan-monocytes: `r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'panMono_nonclassicalMono')`) and significant in the severe disease (`r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'panMono_nonclassicalMono')`) as compared with healthy cell donors (`r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'panMono_nonclassicalMono')`). In addition, the intermediate monocyte compartment was substantially, yet not significantly larger in COVID-19 patients (median, % of CD45^+^ cells, moderate: `r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'panMono_intermediateMono')`, severe: `r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'panMono_intermediateMono')`) than in control individuals (`r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'panMono_intermediateMono')`) (__Figure \@ref(fig:fig-subset-distribution)__). Of note, neutrophil expansion [@Silvin2020; @Penttila2021; @Vitte2020; @Laing2020; @Christensen2021] along with a profound reduction of non-classical monocyte levels [@Gatti2020; @Penttila2021; @Silvin2020; @Geanon2021; @Schulte-Schrepping2020; @Trombetta2021; @Mueller2021; @Zingaropoli2021; @Christensen2021; @Vasse2021; @Lucas2020] was described as a characteristic of acute COVID-19.</span>
+
+The neutrophil CD64 was virtually absent in healthy controls (median $\Delta$MFI: `r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'neutrophils_CD64')`) but highly expressed in moderate (`r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'neutrophils_CD64')`) and severe COVID-19 (`r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'neutrophils_CD64')`). 
+A similar pattern of CD64 regulation was discerned for classical (median $\Delta$MFI, healthy: `r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'classicalMono_CD64')`, moderate: `r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'classicalMono_CD64')`, severe: `r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'classicalMono_CD64')`) and intermediate monocytes (median $\Delta$MFI, healthy: `r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'intermediateMono_CD64')`, moderate: `r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'intermediateMono_CD64')`, severe: `r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'intermediateMono_CD64')`), which, however, expressed this FC$\gamma$ receptor at high levels also in non-infected controls <span custom-style = 'revision'>(_Supplementary Figure S7__)</span>.
+Surface expression of CD86 in classical (median $\Delta$MFI, healthy: `r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'classicalMono_CD86')`, moderate: `r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'classicalMono_CD86')`, severe: `r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'classicalMono_CD86')`) and intermediate monocytes (healthy: `r my_median(filter(mono_data$data_tbl, sev_paper == 'healthy'), 'intermediateMono_CD86')`, moderate: `r my_median(filter(mono_data$data_tbl, sev_paper == 'moderate'), 'intermediateMono_CD86')`, severe: `r my_median(filter(mono_data$data_tbl, sev_paper == 'severe'), 'intermediateMono_CD86')`) reached the maximum in moderate COVID-19 patients as compared with healthy controls and severe COVID-19 patients <span custom-style = 'revision'>(__Supplementary Figure S8__)</span>.
+
+## Patterns of innate myloid leukocyte response in acute COVID-19
+
+<span custom-style = 'revision'>
+In order to elucidate possible patterns of co-regulation of myeloid leukocyte quantity and surface phenotype, we subjected the set of `r length(cyto_clust$cyto_variables)` flow cytometry parameters measured in our study (__Supplementary Table S3__) and the healthy and COVID-19 study participants to self-organizing map clustering [@Kohonen1995; @Vesanto2000].
+</span>
+
+<span custom-style = 'revision'>
+By this means, we could identify three clusters of the cytometry features and four clusters of the study individuals (__Supplementary Figure S9__). The cytometry feature clusters included (1) a subset consisting primarily of markers of neutrophil expansion (termed 'Neutro': Lin^-^ and neutrophil levels, neutrophil CD64, NLR and monocyte: lymphocyte ratio/MLR), (2) a cluster dominated by CD86, CD163 and FPN1 expression in neutrophils and monocyte sub-populations and monocyte subset quantity variables (termed: 'CD86/CD163') and (3) a cluster encompassing mainly D40, CD71 and CD64 levels in myeloid populations (termed 'CD40/CD64/CD71') (__Figure \@ref(fig:fig-clustering)A__).
+</span>
+
+<span custom-style = 'revision'>
+Healthy controls and moderate COVID-19 cases comprised 75% of the largest participant cluster #1 and was characterized by the lowest levels CD40/CD64/CD71 parameters as well as healthy-like monocyte subset distribution, neutrophil levels and neutrophil CD64 expression (__Figure \@ref(fig:fig-clustering)AB__). Interestingly, none of the severe COVID-19 cases assigned to the cluster #1 required an ICU treatment (__Supplementary Table S4__). 
+The remaining clusters consisted predominantly of severe COVID-19 patients. The hallmark of the cluster #2 was an increased expression of CD86, C163, the immunosuppresive PD-L1 molecule (CD279) and the iron exporter FPN1 in classical and intermediate monocytes as well as an expansion of the intermediate subset. The participant cluster #3 in turn was primarily characterized by an elevated neutrophil and monocyte CD64 as well as a depletion of the non-classical monocytes. Finally, leukocyte samples assigned to the cluster #4 displayed a consistent expansion of the neutrophil compartment, elevated CD64 in neutrophils and a depletion non-classical monocytes (__Figure \@ref(fig:fig-clustering)A__).
+</span>
+
+<span custom-style = 'revision'>
+In a comparison restricted to the COVID-19 individuals, the participant clusters demonstrated similar age and body mass index. In turn, the cluster #1 and #4 COVID-19 individuals were predominantly male (78%) as compared with the remaining subjects. Concerning the disease course, the fraction of participants requiring respiratory support was the lowest in cluster #1 and peaked in the clusters #3 and #4. However, none of these clinical features was significantly different in the all-group and the cluster #1 versus rest comparisons (__Supplementary Table S4__).
+</span>
+
+<span custom-style = 'revision'>
+Finally, we investigated the inflammatory status and iron turnover parameters in COVID-19 patients assigned to the participant clusters. Although the differences between the clusters did not reached statistical significance following multiple testing correction, a clear tendency towards increased blood levels of IL6, CRP and neopterin was observed in the clusters #2, #3 and #4 as compared with the healthy-like cluster #1 (__Figure \@ref(fig:fig-clust-inflammation)__, __Supplementary Table S4__). Accordingly, the clusters #2, #3 and #4 had the lowest levels of circulating iron and transferrin saturation values suggestive of inflammatory iron restriction [@Weiss2018]. Of interest, despite the elevated inflammatory marker levels, blood ferritin concentration in the cluster #2 tended to be lower than in the similarly inflammatory clusters #3 and #4 (__Figure \@ref(fig:fig-clust-inflammation)__, __Supplementary Table S4__).
+</span>
+
+<span custom-style = 'revision'>
+Collectively, the clustering analysis results suggest the presence of qualitatively and quantitatively distinct phenotypes of innate myeloid cell response to SARS-CoV-2 infection. Such phenotypic diversity is likely associated with COVID-19 severity and partially independent of the demographic patient background.
+</span>
+
+\newpage
+
+# Discussion
+
+Exaggerate cytokine and innate cell response is hallmark of <span custom-style = 'revision'>severe COVID-19</span> requiring hospitalization, oxygen or ICU therapy [@Schulte-Schrepping2020; @Christensen2021; @Silvin2020; @Laing2020; @Lucas2020; @Penttila2021; @Vitte2020; @Bellmann-Weiler2021].
+In agreement with previous <span custom-style = 'revision'>reports</span>, we observed elevated circulating IL6, CRP and neopterin levels and an expansion of neutrophils with a concomitant reduction in lymphocytes <span custom-style = 'revision'>in COVID-19 patients requiring respiratory support</span>. Similar to other infections [@Weiss2018; @Brandtner2020], this resulted in reduced levels of circulating iron and <span custom-style = 'revision'>elevated ferritin</span>, in line with few published reports <span custom-style = 'revision'>on COVID-19</span> [@Yagc2021; @Christensen2021; @Yagc2021; @Bellmann-Weiler2020; @Zhou2020]. 
+The sole cellular iron exporter FPN1 in monocyte and macrophages is down-regulated by the hormone hepcidin and diverse <span custom-style = 'revision'>inflammatory cytokines and up-regulated by cellular iron</span> [@Weiss2018; @Haschka2019; @Haschka2021; @Nemeth2004a]. Interestingly, hypoferremia in acute COVID-19 was accompanied by only mildly elevated blood hepcidin [@Yagc2021; @Zhou2020]<span custom-style = 'revision'>, which may explain the consistently elevated FPN1 levels in the subsets of inflammatory COVID-19 patients assigned to the participant cluster #2.</span>
+<span custom-style = 'revision'>In general, the changes of the cellular iron trafficking and systemic turnover in COVID-19</span> may bear relevance for the effective SARS-CoV-2 control because iron levels significantly impact on differentiation of T cells, monocytes and macrophages and also affect anti-microbial immune effector mechanisms [@Weiss2018; @Haschka2021]. <span custom-style = 'revision'>As such, these processes require further mechnistic and clinical investigations.</span>
+
+By applying flow cytometry, we were able to characterize a palette of `r length(cyto$variable)` variables associated with the quantity, pro-, anti-inflammatory <span custom-style = 'revision'>and iron transport</span> phenotype of neutrophils, classical, intermediate and non-classical monocytes.
+Among them, a consistent depletion of non-classical monocytes <span custom-style = 'revision'>in part</span> paralleled by an expansion of the intermediate subset became evident in COVID-19 patients. This phenomenon was also described by others <span custom-style = 'revision'>and suggested to aggravate with infection severity</span>[@Gatti2020; @Penttila2021; @Silvin2020; @Geanon2021; @Schulte-Schrepping2020; @Trombetta2021; @Mueller2021; @Zingaropoli2021; @Christensen2021; @Vasse2021; @Lucas2020]. 
+<span custom-style = 'revision'>It was also proposed to predict the risk of critical disease and respiratory failure [@Silvin2020; @Vasse2021; @Mueller2021].</span> 
+The CD16^+^ non-classical subset contraction was suggested to be specific for COVID-19 but not for bacterial sepsis [@Christensen2021]. 
+However, <span custom-style = 'revision'>results of an experimental endotoxin challenge in humans demonstrated a general depletion of blood monocytes</span> and a step-wise reconstitution involving immediately the classical population followed by the remaining subsets [@Patel2017]. Hence, the non-classical monocyte contraction in COVID-19 may reflect an early step in the non-specific inflammatory response to SARS-CoV-2. <span custom-style = 'revision'>A subsequent re-population of the non-classical compartment by classical monocyte-derived precursors during convalescence</span> can be inferred from longitudinal COVID-19 immunophenotyping studies  [@Penttila2021; @Christensen2021; @Silvin2020].
+
+<span custom-style = 'revision'>Our immunophenotyping results</span> revealed an up-regulation of the FC$\gamma$ receptor CD64 in neutrophils, classical and intermediate monocytes <span custom-style = 'revision'>in COVID-19 patients</span> as described recently [@Geanon2021; @Vitte2020; @Silvin2020; @Schulte-Schrepping2020; @Bourgoin2021]. 
+<span custom-style = 'revision'>For neutrophils, the elevated CD64 expression together with lowered neutrophil CD14 levels observed in the study group of severe COVID-19 patients may indicate the presence of less mature pro-neutrophil-like CD64^+^ CD14^low^ cells expanding in early COVID-19 [@Schulte-Schrepping2020] and sepsis [@Meghraoui-Kheddar2020; @Sack2017] and hence represent a general reaction to a strong inflammatory stimuli triggering the emergency myelopoiesis [@Schulte-Schrepping2020; @Silvin2020]. This is further supported by our clustering data, where the high neutrophil CD64 levels co-occurred with the neutrophil expansion in the highly inflammatory, severe COVID-19 dominated participant cluster #4. Since the CD64 expression in neutrophils and monocytes was the highest in the clusters #3 and #4 comprising of predominantly ventilated severe COVID-19 patients, secondary bacterial airway co-infections may also contribute to the up-regulation of this marker.</span>
+The expression of CD86 in the intermediate and classical monocyte subsets followed a distinct regulatory pattern with a peak in moderate COVID-19 which is in line with other publications [@Trombetta2021; @Laing2020].
+<span custom-style = 'revision'>
+In the clustering analysis of our cytometry data, monocyte CD86 expression was found co-regulated with the immunosuppressive ligand CD279 (PD-L1), the alternative macrophage activation marker CD163 and the iron exporter FPN1 and was the highest in the participant cluster #2. Collectively, this suggests, that in a fraction of COVID-19 patients, subsumed under the participant cluster #2 in the study cohort, the blood monocytes may acquire an immunoregulatory, T cell-suppressive, iron export CD86^high^ CD279^high^ FPN1^high^ phenotype. Notably, expansion of a similar HLA-DR^low^, CD86^hi^, CD163^hi^ and T cell-suppressive classical monocyte populations was described for moderate and severe COVID-19 [@Silvin2020; @Penttila2021; @Christensen2021; @Schulte-Schrepping2020; @Bost2021]. In our cohort, however, no significant differences in monocyte HLA-DR expression between COVID-19 patients and healthy controls could be observed, which may be attributed to the differences in the detection methodology (multi-color flow cytometry versus CyTOF or spectral flow cytometry).
+</span>
+
+<span custom-style = 'revision'>
+To get a thorough overview of myeloid leukocyte response in acute COVID-19, we performed a clustering analysis with the self-organizing map technique [@Kohonen1995; @Vesanto2000] and could identify four distinct clusters of the study participants. The largest, healthy-like cluster #1 was associated with near normal composition and surface phenotype of neutrophils and monocytes as well as the lowest levels of systemic inflammation, largely normal iron homeostasis and low risk of ICU admission. the other clusters were characterized by a clearly inflammatory and iron-restrictive background but differed in the myeloid leukocyte phenotype. In particular, the cluster #2 was hallmarked by the presence of CD86-, CD163-, CD279- and FPN1-expressing monocytes suggestive of an immunoregulatory phenotype [@Silvin2020; @Penttila2021; @Christensen2021; @Schulte-Schrepping2020; @Bost2021] as discussed above. The cluster #3 was characterized primarily by high levels of monocyte CD40 and CD64 which may reflect a pro-inflammatory priming of those cells as observed in chronic inflammatory conditions [@Luo2018; @Yang2016; @Hamers2019]. Finally, the expansion of CD64-expressing neutrophils in the participant cluster #4 may represent an inflammation-triggered emergency myelopoiesis and occurrence of immature neutrophils in the circulation of severe COVID-19 patients [@Schulte-Schrepping2020; @Silvin2020; @Meghraoui-Kheddar2020; @Sack2017]. The prognostic and therapeutic relevance of such individual heterogeneity of the innate response to the SARS-CoV-2 pathogen needs to be investigated in a larger study collective.
+</span>
+
+Our study bears limitations referring to a small number of participants which, together with the lacking verification cohort, precluded more systematic <span custom-style = 'revision'>analyses adjusted for known risk factors of severe COVID-19 such as age, sex and co-morbidity.</span>
+The alterations in neutrophil and monocytes subset quantities and phenotype as well as the clinical utility of the predictive myeloid score needs to be verified in a larger follow-up study possibly including longitudinal determinations to capture dynamics of the myeloid leukocyte compartments [@Penttila2021; @Christensen2021; @Silvin2020; @Trombetta2021; @Lucas2020]. 
+<span custom-style = 'revision'>Additionally, differences in age-structure and likely in frequency of co-morbidity between the healthy controls COVID-19 patients in the study cohort may have confounded the presented analysis results.</span>"
+
+
+Our study corroborates the massive changes in the neutrophil and monocyte compartment in acute moderate and severe COVID-19 including expansion of neutrophils, depletion of the non-classical monocytes 
+<span custom-style = 'revision'>as well as regulation of CD64 and CD86 expression in myeloid leukocytes. Finally, we demonstrate the presence of four patterns of the innate myeloid response to SARS-CoV-2 with possible implication for diagnosis, risk assessment and therapy of COVID-19.</span>. 
+
+\newpage
+
+# Methods {#sec:methods}
+
+## Ethics and study approval
+
+The study performed in accordance with the Declaration of Helsinki and the European Data Policy and approved by the institutional review board of the University of Innsbruck (approval number: 1091/2020). All study participants were conscious and gave a written informed consent prior to enrollment. The participants’ data were anonymized after recording hence making identification of the particular subjects impossible.
+
+## Study population and procedures
+
+he study was performed between 21.03.2020 and 16.11.2020 at the hospital of the University of Innsbruck, Tyrol, Austria. The inclusion criteria for COVID-19 participants were age $\geq$ 18 years and hospital admission because of acute SARS-CoV-2 infection confirmed by nasal or oral swab PCR test. The exclusion criterion was critical physical or mental state at admission precluding giving an informed study participation consent. Healthy controls were recruited among the institution’s health care workers.
+
+Measurement of the laboratory inflammation markers: C-reactive protein (CRP), interleukin-6 (IL6), neopterin, and iron status parameters: ferritin, iron concentration and transferrin saturation (TF-Sat), in blood at admission was done as routine determination at the hospital central laboratory. Whole venous EDTA blood (5 - 10 ml) for the flow cytometry measurement was withdrawn within 72 hours from hospital admission.
+
+## Flow cytometry
+
+The flow cytometry staining was done with the antibodies against the qualitative backbone markers of the lymphocyte, neutrophil and monocyte lineages and the test antibodies for qualitative markers of pro- and anti-inflammatory surface phenotype (CD40, CD64, CD80, CD86, CD163, CD274/PD-L1 and CD279/PD-1) and iron turnover proteins (CD71/transferrin receptor 1 and FPN1/ferroportin)[@Haschka2019; @Ross2017] listed in __Supplementary Table S2__. The antibodies were purchased from Beckton-Dickinson (Franklin Lakes, NJ), Thermo Fisher (Waltham. MA) or Biolegend (San Diego, CA).
+
+Whole blood was subjected to RBC depletion with ACK (Ammonium-Chloride-Potassium) buffer, followed by extensive washing with FACS buffer (1% fetal calf serum, 0.5 mM EDTA in PBS) and staining with the backbone antibody mix (dilutions: 1:20 - 1:200 in BD Horizon™ Brilliant Stain Buffer, Beckton-Dickinson) for 10 minutes at 4 ^o^C. Next, the sample was washed, split and stained with the separate isotype or test antibody mixes (1:200 dilution in BD Horizon™ Brilliant Stain Buffer) for additional 10 minutes at 4 ^o^C. The samples were measured with a Cytoflex S device (Beckman Coulter, Brea, CA) and analyzed with FlowJo 10.7 software (Beckton-Dickinson).
+
+The cytometry data was analyzed by an experienced operator blinded to the study group assignment with a strategy depicted in __Supplementary Figures S1__ and __S2__. 
+<span custom-style = 'revision'>Neutrophils were identified within the lineage-negative leukocytes (CD3^-^ CD19^-^ CD56^-^) by logical AND gating of CD11b^+^, CD16^+^, CD62L^+^ and SSC^lo^ events. Monocytes were defined within the non-neutrophil gate (logical NOT gating) by UMAP [@McInnes2018] in respect to CD11b, CD14, C15, CD16, CD62L, CCR2, CX3CR1 and HLA-DR expression. The monocyte cluster was identified by high CD14, CCR2, CX3CR1 and HLA-DR levels. Classical, intermediate and non-classical monocytes were identified within the monocyte UMAP cluster by differences in CD14, CD16, CCR2, CX3CR1, CD62L and HLA-DR expression [@Wong2012a].</span>
+Surface expression was expressed as a difference in median signal intensity ($\Delta$MFI) between the specific staining and the isotype. Neutrophil CD71 and CD163 as well as CD80 staining in neutrophils and monocytes were excluded from the downstream analysis due to low and virtually invariant expression levels. Monocyte: lymphocyte ratio was calculated as a ratio of the CD45^+^ percents of HLA-DR^+^ pan-monocytes to Lineage^+^ (CD3, CD19, CD56) cells. Neutrophil: lymphocyte ratio was calculated as a ratio of the CD45^+^ percents of CD15^+^ SSC^hi^ neutrophils to Lineage^+^ cells.
+
+## Statistical analysis
+
+Statistical analysis was done with R version 4.0.5 and packages, _tidyverse_, <span custom-style = 'revision'>_DescTools_, _rstatix_</span> and _cowplot_ packages [@Wickham2019; @Wilke2019], <span custom-style = 'revision'>the in-house-developed package _ExDA_ (https://github.com/PiotrTymoszuk/ExDA) and a script with clustering function wrappers (https://github.com/PiotrTymoszuk/clustering-tools-2).</span>
+
+Since most of the analyzed variables demonstrated non-normal distribution (Shapiro-Wilk test), non-parametric hypothesis tests were utilized in the downstream analyses. To search for cytometry features (__Supplementary Table S3__) significantly differing between 
+<span custom-style = 'revision'>
+healthy controls. moderate and severe COVID-19 patients, Kruskal-Wallis test with 
+</span>
+with Benjamini-Hochberg (FDR: False Discovery Rate) correction for multiple comparisons was applied [@Benjamini1995]. 
+<span custom-style = 'revision'>
+The significant variables were defined by the pFDR < 0.05 cutoff. Post-hoc testing for pairwise differences between the groups was accomplished by Benjamini-Hochberg corrected Mann-Whitney U test.
+</span>
+<span custom-style = 'revision'>
+Clustering of the flow cytometry features (__Supplementary Table S3__) and of the healthy and COVID-19 study participants in respect to the flow cytometry features was done with a combined self-organizing map (SOM) and hierarchical clustering (HCl) procedure [@Kohonen1995; @Vesanto2000]. The data were pre-processed by Z-score normalization and the participants with missing values eliminated. The cytometry features or participants were subjected to dimensionality reduction by SOM (5 $\times$ 5 hexagonal grid, cosine distance between the features/participants) and, subsequently, the SOM nodes were clustered with the HCl (cosine distance between the nodes, Ward D2 algorithm). The choice of the SOM node cluster number was motivated by the bend of the within-cluster sum-of-square curve and a visual analysis of the dendrograms (__Supplementary Figure S9__). The fraction of clustering variance (ratio of the total within-cluster to total sum of squares) was `r signif(cyto_clust$ft_diagnostic$variance$frac_var, 2)` and `r signif(cyto_clust$part_diagnostic$variance$frac_var, 2)` for the feature and participant clustering, respectively.
+</span>
+
+\newpage
+
+# Data availability
+
+The data set with variables analyzed in the study is available as __Supplementary Table S5__. The R analysis pipeline is available at https://github.com/PiotrTymoszuk/covFacs.
+
+# Acknowledgments
+
+We would like to acknowledge the suffering and commitment of the study participants and the medical staff during the COVID-19 pandemic.
+
+# Author contribution
+
+Conceptualization: DH, VP, DW, PT, GW; Data Curation: DH, VP; Formal Analysis: DH, PT;
+Investigation: DH, VP, FB, GF, SW, RB, PT; Methodology: DH, VP, PT; Resources: DW, GW;
+Visualization: DH, VP, PT; Original Draft Preparation: DH, PT; Review and Editing: DH, VP, FB, GF, SW, RB, DW, PT, GW.
+
+# Conflict of interest
+
+PT owns his data science enterprise, Data Analytics as a Service Tirol. PT has also received an honorarium for the study data management, curation and analysis. The author declares no other conflicts of interest. Other authors declare that non conflict of interest exists.
+
+# Funding information
+
+Support by the Christian Doppler Society (GW) and the Austrian Research Fund Doctoral Programm HOROS (FWF-W1253, GW, VP) and the Society for Funding Research and Education in Molecular Immunology and Infectiology ('Verein zur Förderung von Forschung und Weiterbildung in Molekularer Immunologie und Infektiologie') is gratefully acknowledged.
+
+\newpage
+
+# Figure Legends
+
+__Figure \@ref(fig:fig-consort). Analysis inclusion scheme.__
+
+__Figure \@ref(fig:fig-cyto-screen). Screening of the flow cytometry features for the differences between healthy controls, moderate and severe COVID-19.__
+
+Levels of `r length(cyto$variable)` parameters of monocytes and neutrophils were measured by flow cytometry in healthy controls, moderate and severe COVID-19 patients within 72 hours post hospital admission (__Supplementary Table S3__). The parameter levels were compared between healthy controls, moderate and severe COVID by Kruskal-Wallis test corrected for multiple testing with Benjamini-Hochberg method (False Discovery Rate, FDR). Significance and $\eta^2$ effect size statistic is presented in the plot. Each point represents a single flow cytometry feature. Significant features are highlighted in read and labeled with their names. The horizontal dashed line represented the significance cutoff (p = 0.05). Numbers of complete observations are presented under the plot.
+
+__Figure \@ref(fig:fig-subset-distribution). Monocyte subset distribution in healthy controls, moderate and severe COVID-19.__ 
+
+Percentages of classical, intermediate and non-classical monocytes within the monocyte cluster cells (__Supplementary Figure S1__ - __S2__) were measured in healthy controls, moderate and severe COVID-19 patients. Statistical significance was determined by Kruskal-Wallis test with Mann-Whitney post-hoc test. Testing results were adjusted for multiple comparisons with Benjamini-Hochberg method. 
+
+__(A)__ Representative cytometry results. Monocyte cluster cells are presented.
+
+__(B)__ Summary plots. Kruskal-Wallis p values are indicated in the plot sub-heading, post-hoc test results are shown in the plot, numbers fo complete observations are presented next to the plot. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range.
+
+__Figure \@ref(fig:fig-clustering). Unsupervised clustering of healthy controls and COVID-19 individuals by myeloid leukocyte cytometry features.__
+
+Flow cytometry features (n = `r length(cyto_clust$cyto_variables)`, __Supplementary Table S3__) and study participants (n numbers presented in __B__) were subjected to clustering analysis with a combined self-organizing map (SOM) - hierarchical clustering (HCl) algorithm (__Supplementary Figure S9__). Three clusters of cytometry features termed after the most characteristic features (neutrophil, CD40, CD64, CD71, CD86 and CD163) and four participant clusters were identified.
+
+__(A)__ Normalized levels of flow cytometry parameters (Z-score) in the participant (horizontal) and cytometry feature clusters (vertical plot facets) presented as a heat map.
+
+__(B)__ Percentages of healthy controls, moderate and severe COVID-19 participants in the participant clusters. Statistical significance was determined by $\chi^2$ test.
+
+__Figure \@ref(fig:fig-clust-inflammation). Differences in systemic inflammation status between the clusters of study participants.__
+
+Blood levels of markers of inflammation (IL6: interleukin 6, C-reactive protein: CRP, neopterin) and iron turnover (ferritin, plasma iron, TF-Sat: transferrin saturation) were compared in COVID-19 patients assigned to the participant clusters (__Figure \@ref(fig:fig-clustering)A__, __Supplementary Figure S9__). Statistical significance was determined by Kruskal-Wallis test with Mann-Whitney post-hoc test. Testing results were adjusted for multiple comparisons with Benjamini-Hochberg method. Numbers of participants assigned to the clusters are indicated under the plots. 
+
+\newpage
+
+# Figures
+
+```{r fig-consort, fig.width = mm_inch(paper_figures$consort$w), fig.height = mm_inch(paper_figures$consort$h), fig.cap = 'Analysis inclusion scheme.'}
+
+paper_figures$consort$plot
+
+```
+
+\newpage
+
+```{r fig-cyto-screen, fig.width = mm_inch(paper_figures$cyto_screen$w), fig.height = mm_inch(paper_figures$cyto_screen$h), fig.cap = 'Screening of the flow cytometry features for the differences between healthy controls, moderate and severe COVID-19.'}
+
+paper_figures$cyto_screen$plot
+
+```
+
+\newpage
+
+```{r fig-subset-distribution, fig.width = mm_inch(paper_figures$subset_distribution$w), fig.height = mm_inch(paper_figures$subset_distribution$h), fig.cap = 'Monocyte subset distribution in healthy controls, moderate and severe COVID-19.'}
+
+paper_figures$subset_distribution$plot
+
+```
+
+\newpage
+
+```{r fig-clustering, fig.width = mm_inch(paper_figures$clustering$w), fig.height = mm_inch(paper_figures$clustering$h), fig.cap = 'Unsupervised clustering of healthy controls and COVID-19 individuals by myeloid leukocyte cytometry features.'}
+
+paper_figures$clustering$plot
+
+```
+
+\newpage
+
+```{r fig-clust-inflammation, fig.width = mm_inch(paper_figures$clust_inflammation$w), fig.height = mm_inch(paper_figures$clust_inflammation$h), fig.cap = 'Differences in systemic inflammation status between the clusters of study participants.'}
+
+paper_figures$clust_inflammation$plot
+
+```
+
+\newpage
+
+# References

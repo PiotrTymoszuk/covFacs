@@ -1,0 +1,250 @@
+---
+title: "Early alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in COVID-19 inpatients"
+subtitle: "Supplementary Material"
+author: ""
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+
+output: 
+  bookdown::word_document2:   
+    reference_docx: ms_template.docx
+bibliography: cov_biblio.bib
+csl: european-journal-of-immunology.csl
+header-includes:
+  \usepackage{longtable}
+  \usepackage{tabu}
+  \usepackage{caption}
+  \usepackage{makecell}
+  \usepackage{pdflscape}
+  \usepackage{array}
+  \usepackage{booktabs}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage{wrapfig}
+  \usepackage{multirow}
+  \usepackage[normalem]{ulem}
+  \usepackage{colortbl}
+  \usepackage{xcolor}
+  \usepackage{float} \floatplacement{figure}{H}\floatplacement{table}{H}
+  \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}}       \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+---
+
+```{r, setup, include = FALSE}
+
+library(bookdown)
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, dev = 'cairo_pdf')
+
+
+```
+
+\newpage
+
+\beginsupplement
+
+# Supplementary Tables {#sec:tables}
+
+```{r tab-chohort, tab.cap = 'Characteristic of the healthy and COVID-19 study participants.'}
+
+suppl_tables$cohort_chara %>% 
+  flextable %>% 
+  width(1, width = 3, unit = 'cm') %>% 
+  width(2:4, width = 2.5, unit = 'cm') %>%
+  width(5:6, width = 2.5, unit = 'cm') %>% 
+  theme_vanilla() %>% 
+  footnote(4, 1, value = as_paragraph('Body Mass Index'), ref_symbols = '1') %>% 
+  footnote(i = c(2, 4), j = 5, value = as_paragraph('Kruskal-Wallis test'), ref_symbols = '2') %>% 
+  footnote(i = c(2, 4, 5), j = 6, value = as_paragraph('Mann-Whitney test'), ref_symbols = '3') %>% 
+  footnote(i = 3, j = 5:6, value = as_paragraph('\u03C7\u00B2 test'), ref_symbols = '4') %>% 
+  font(part = 'all', fontname = 'Cambria') %>% 
+  fontsize(size = 10, part = 'all')
+
+```
+
+\newpage
+
+```{r tab-antibodies, tab.cap = 'Antibodies used for flow cytometry staining.'}
+
+suppl_tables$cytom_antibodies %>% 
+  flextable %>% 
+  font(part = 'all', fontname = 'Cambria') %>% 
+  fontsize(size = 10, part = 'all') %>% 
+  width(1, width = 3, unit = 'cm') %>% 
+  width(2:4, width = 3, unit = 'cm') %>% 
+  merge_v(1) %>% 
+  theme_vanilla()
+
+```
+
+\newpage
+
+```{r tab-cyto-vars, tab.cap = 'Variables obtained from cytometry staining analyzed in the study.'}
+
+suppl_tables$cytometry_vars %>% 
+  flextable %>% 
+  width(1, width = 6, unit = 'cm') %>% 
+  width(2, width = 3, unit = 'cm') %>% 
+  theme_vanilla() %>%
+  footnote(1, 2, 
+           value = as_paragraph('panMono: monocyte cluster cells defined by UMAP, \u0394MFI: difference in median fluorescence intensity between the test antibody and isotype-stained sample'), 
+           part = 'header') %>% 
+  font(part = 'all', fontname = 'Cambria') %>% 
+  fontsize(size = 10, part = 'all')
+
+```
+
+\newpage
+
+```{r tab-cluster, tab.cap = 'Characteristic of COVID-19 patients assigned to the participant clusters defined by flow cytometry features.'}
+
+suppl_tables$cluster_chara %>% 
+  flextable %>% 
+  width(1, width = 3, unit = 'cm') %>% 
+  width(2:5, width = 2.3, unit = 'cm') %>%
+  width(6, width = 2, unit = 'cm') %>% 
+  width(7, width = 2.5, unit = 'cm') %>% 
+  theme_vanilla() %>% 
+  footnote(4, 1, value = as_paragraph('Body Mass Index'), ref_symbols = '1') %>% 
+  footnote(i = c(2, 4, 5, 8:13), j = 6, value = as_paragraph('Kruskal-Wallis test'), ref_symbols = '2') %>% 
+  footnote(i = c(2, 4, 5, 8:13), j = 7, value = as_paragraph('Mann-Whitney test'), ref_symbols = '3') %>% 
+  footnote(i = c(3, 6, 7), j = 6:7, value = as_paragraph('\u03C7\u00B2 test'), ref_symbols = '4') %>% 
+  font(part = 'all', fontname = 'Cambria') %>% 
+  fontsize(size = 10, part = 'all')
+
+```
+
+\newpage
+
+```{r tab-data, tab.cap = 'Complete study dataset. The table is available as a supplementary Excel file.'}
+
+tibble(' ' = '') %>% 
+  flextable()
+
+```
+
+\newpage
+
+# Supplementary Figures {#sec:figures}
+
+```{r fig-gating-strategy, fig.width = mm_inch(suppl_figures$gating_strategy$w), fig.height = mm_inch(suppl_figures$gating_strategy$h), fig.cap = 'Gating strategy and identification of blood neutrophils and monocytes.'}
+
+suppl_figures$gating_strategy$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-gating-strategy). Gating strategy and identification of blood neutrophils and monocytes.__
+
+Lin: lineage staining (CD3, CD19, CD56). Neutrophils were identified within the CD45^+^ Lin^-^ blood leukocyte subset by logical gating (AND) of CD16^+^, CD62L^+^, CD11b^+^ and SSC^hi^ events. To identify monocytes, the non-neutrophil cells (NOT logical gate) were subjected to UMAP (uniform manifold approximation and projection, euclidean distance, k = 9 nearest neighbors, distance cutoff = 0.5) in respect to HLA-DR, CD11b, CD14, CD16, CCR2, CX3CR1, CD62L and CD15 signals. The monocyte cluster was distinguished by high expression of HLA-DR, CD14, CCR2 and CX3CR1.
+
+\newpage
+
+```{r fig-monocyte-subsets, fig.width = mm_inch(suppl_figures$monocyte_subsets$w), fig.height = mm_inch(suppl_figures$monocyte_subsets$h), fig.cap = 'Identification of blood monocyte subsets.'}
+
+suppl_figures$monocyte_subsets$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-monocyte-subsets). Identification of blood monocyte subsets.__
+
+Monocyte cluster cells were identified as presented in __Supplementary Figure S\@ref(fig:fig-gating-strategy)__. Classical monocytes were defined as CD14^hi^ CD16^-/lo^ CCR2^hi^ HLA-DR^+^ CX3CR1^lo^ monocyte cluster cells. Intermediate monocytes were defined as CD14^int/hi^ CD16^+^ CCR2^int^ HLA-DR^bright^ CX3CR1^lo^ monocyte cluster cells. Non-classical monocytes were defined as CD14^lo^ Cd16^+^ CCR2^low^ HLA-DR^+^ CX3CR1^+^ monocyte cluster cells.
+
+\newpage
+
+```{r fig-systemic-inflammation, fig.width = mm_inch(suppl_figures$systemic_inflammation$w), fig.height = mm_inch(suppl_figures$systemic_inflammation$h), fig.cap = 'Systemic inflammation and iron turnover markers in hospitalized COVID-19 subjects.'}
+
+suppl_figures$systemic_inflammation$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-systemic-inflammation). Systemic inflammation and iron turnover markers in hospitalized COVID-19 subjects.__
+
+Markers of systemic inflammation (__A__): C-reactive protein (CRP), interleukin-6 (IL6), neopterin, and iron turnover (__B__): ferritin, iron and transferrin saturation (TF-Sat), were determined in serum of moderate and severe COVID-19 study participants at hospital admission. Statistical significance was determined by Mann-Whitney U test with Benjamini-Hochberg adjustment for multiple testing. P values are indicated in the plot sub-heading, numbers of complete observations are presented next to the plots. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range. Blue dashed lines represent the normal range of the parameter.
+
+\newpage
+
+```{r fig-backbone, fig.width = mm_inch(suppl_figures$backbone$w), fig.height = mm_inch(suppl_figures$backbone$h), fig.cap = 'Regulation of the monocyte subset markers HLA-DR, CCR2 and CX3CR1 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$backbone$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-backbone). Regulation of the monocyte subset markers HLA-DR, CCR2 and CX3CR1 in healthy controls, moderate and severe COVID-19.__
+
+Surface expression of HLA-DR (__A__), CCR2 (__B__) and CX3CR1 (__C__) in classical, intermediate and non-classical monocytes (__Supplementary Figure S\@ref(fig:fig-monocyte-subsets)__) was measured as mean fluorescence intensity (MFI) in healthy controls, moderate and severe COVID-19 patients. Statistical significance of the expression differences between the monocyte subsets was determined with Friedman test (grouping factor: cell donor) with Benjamini-Hochberg adjustment for multiple testing. P values are indicated in the plot sub-heading, numbers of cell donors are presented next to the plots. Each point represents a single observation, gray lines connect values obtained from the same cell donor.
+
+\newpage
+
+```{r fig-cd14, fig.width = mm_inch(suppl_figures$cd14$w), fig.height = mm_inch(suppl_figures$cd14$h), fig.cap = 'Regulation of neutrophil CD14 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$cd14$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-cd14). Regulation of neutrophil CD14 in healthy controls, moderate and severe COVID-19.__
+
+Surface expression of neutrophil CD14 (__Supplementary Figure S\@ref(fig:fig-gating-strategy)__) was measured as mean fluorescence intensity (MFI) in healthy controls, moderate and severe COVID-19 patients. Statistical significance was determined by Kruskal-Wallis test with Mann-Whitney post-hoc test. Testing results were adjusted for multiple comparisons with Benjamini-Hochberg method. Kruskal-Wallis p values are indicated in the plot sub-heading, post-hoc test results are shown in the plot, numbers of complete observations are presented next to the plot. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range.
+
+\newpage
+
+```{r fig-cell-inflammation, fig.width = mm_inch(suppl_figures$cell_inflammation$w), fig.height = mm_inch(suppl_figures$cell_inflammation$h), fig.cap = 'Cytometry markers of myeloid leukocyte expansion in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$cell_inflammation$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-cell-inflammation). Cytometry markers of myeloid leukocyte expansion in healthy controls, moderate and severe COVID-19.__
+
+Percentages of lineage-negative cells (Lin^-^) and neutrophils within the CD45^+^ leukocyte compartment and neutrophil:leukocyte ratio (__Supplementary Figure S\@ref(fig:fig-gating-strategy)__) were measured in healthy controls, moderate and severe COVID-19 patients. Statistical significance was determined by Kruskal-Wallis test with Mann-Whitney post-hoc test. Testing results were adjusted for multiple comparisons with Benjamini-Hochberg method. 
+
+__(A)__ Representative cytometry results. CD45^+^ cells are presented.
+
+__(B)__ Summary plots. Kruskal-Wallis p values are indicated in the plot sub-heading, post-hoc test results are shown in the plot, numbers of complete observations are presented next to the plot. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range.
+
+\newpage
+
+```{r fig-myeloid-cd64, fig.width = mm_inch(suppl_figures$myeloid_cd64$w), fig.height = mm_inch(suppl_figures$myeloid_cd64$h), fig.cap = 'Regulation of myeloid leukocyte CD64 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$myeloid_cd64$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-myeloid-cd64). Regulation of myeloid leukocyte CD64 in healthy controls, moderate and severe COVID-19.__
+
+Surface expression of CD64 was measured as delta median fluorescence intensity ($\Delta$MFI) versus isotype staining in neutrophils, classical and intermediate monocytes (__Supplementary Figure S\@ref(fig:fig-gating-strategy)__ - __S\@ref(fig:fig-monocyte-subsets)__) in healthy controls, moderate and severe COVID-19 patients. Statistical significance was determined by Kruskal-Wallis test with Mann-Whitney post-hoc test. Testing results were adjusted for multiple comparisons with Benjamini-Hochberg method. 
+
+__(A)__ Representative cytometry results. Open histograms: isotype, tinted histograms: specific staining.
+
+__(B)__ Summary plots. Kruskal-Wallis p values are indicated in the plot sub-heading, post-hoc test results are shown in the plot, numbers of complete observations are presented next to the plot. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range.
+
+\newpage
+
+```{r fig-myeloid-cd86, fig.width = mm_inch(suppl_figures$myeloid_cd86$w), fig.height = mm_inch(suppl_figures$myeloid_cd86$h), fig.cap = 'Regulation of monocyte CD86 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$myeloid_cd86$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-myeloid-cd86). Regulation of monocyte CD86 in healthy controls, moderate and severe COVID-19.__
+
+Surface expression of CD86 was measured as delta median fluorescence intensity ($\Delta$MFI) versus isotype staining in classical and intermediate monocytes (__Supplementary Figure S\@ref(fig:fig-monocyte-subsets)__) in healthy controls, moderate and severe COVID-19 patients. Statistical significance was determined by Kruskal-Wallis test with Mann-Whitney post-hoc test. Testing results were adjusted for multiple comparisons with Benjamini-Hochberg method. 
+
+__(A)__ Representative cytometry results. Open histograms: isotype, tinted histograms: specific staining.
+
+__(B)__ Summary plots. Kruskal-Wallis p values are indicated in the plot sub-heading, post-hoc test results are shown in the plot, numbers of complete observations are presented next to the plot. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range.
+
+\newpage
+
+```{r fig-cluster-qc, fig.width = mm_inch(suppl_figures$cluster_qc$w), fig.height = mm_inch(suppl_figures$cluster_qc$h), fig.cap = 'Training and clustering of self-organizing maps.'}
+
+suppl_figures$cluster_qc$plot
+
+```
+
+__Supplementary Figure S\@ref(fig:fig-cluster-qc). Training and clustering of self-organizing maps.__
+
+Flow cytometry parameters (__Supplementary Table S\@ref(tab:tab-cyto-vars)__) and study participants were subjected to self-organizing map (SOM) dimensionality reduction (5 $\times$ 5 hexagonal grid, cosine distance between the observations) followed by SOM node clustering with Ward D2 algorithm (cosine distance between the nodes).
+
+__(A)__ SOM training process for the cytometry parameters and study participants. Mean distance to the SOM winning unit as a function of algorithm iteration is presented. Each point represents a single iteration blue lines depict LOESS (locally weighted scatterplot smoothing) trends.
+
+__(B)__ Clustering of the SOM nodes for the cytometry parameters and study participants. Total within cluster sum-of-squares are shown as a function of cluster numbers. Red lines indicate the selected optimal number of clusters.
+
+__(C)__ Clustering of the SOM nodes for the cytometry parameters and study participants. Node clustering dendrograms are presented.

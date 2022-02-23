@@ -1,0 +1,171 @@
+---
+title: "Early alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in COVID-19 inpatients"
+subtitle: "Point-to-Point Reply"
+author: ""
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+
+output: 
+  pdf_document:
+    latex_engine: xelatex
+bibliography: cov_biblio.bib
+csl: european-journal-of-immunology.csl
+header-includes:
+  \usepackage{longtable}
+  \usepackage{tabu}
+  \usepackage{caption}
+  \usepackage{makecell}
+  \usepackage{pdflscape}
+  \usepackage{array}
+  \usepackage{booktabs}
+  \usepackage{threeparttable}
+  \usepackage{threeparttablex}
+  \usepackage{wrapfig}
+  \usepackage{multirow}
+  \usepackage[normalem]{ulem}
+  \usepackage{colortbl}
+  \usepackage{xcolor}
+  \usepackage{float} \floatplacement{figure}{H}\floatplacement{table}{H}
+  \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}}       \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+---
+
+```{r, setup, include = FALSE}
+
+library(bookdown)
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, dev = 'cairo_pdf')
+
+
+```
+
+\newpage
+
+# Reviewer 1
+
+## Comments to the Author
+
+This study by Haschka et al. entitled “Early alterations of blood monocyte subsets and transferrin receptor expression are linked to infection severity in hospitalized COVID-19 patient” is one of the numerous studies that have phenotyped the blood samples from COVID-19 patients. This study applies a similar approach as described in previous studies, i.e. investigating differences in surface marker expression in myeloid cells aiming to find the prognostic markers for early diagnosis of severe disease. There are several concerns that require addressing to strengthen the manuscript further.
+
+## Reply to the Reviewer
+
+We thank the Reviewer for careful study of the manuscript, appreciation of our work and valuable feedback. Please find below the replies to the particular issues.
+
+## Issue 1
+
+The title “Early alterations of blood monocyte subsets and transferrin receptor expression are linked to infection severity in hospitalized COVID-19 patient” could be misleading. (1) How do the authors establish as an early stage? Are the writers aware of what "late" modifications imply and how they differ from "early" alterations? Can the authors elaborate on what "late" modifications entail and differ from "early" alterations? 
+
+## Reply 1
+
+David, könntest Du was draften? Sollen wir irgendwie erwähnen, dass wir auch weitere Zeitpunkte bei manchen Patienten gemessen haben? Oder den Titel und die Formulierung 'early' ändern?
+
+## Issue 2
+
+Transferrin receptor expression (CD71) showed a low odds ratio of 0.92 (Figure 6) while there are more significant findings such as int monocyte CD64 expression. Why did the authors choose transferrin receptor expression? Can the authors elaborate more on this?
+
+## Reply 2
+
+In the initial version of the manuscript, the choice of the variables for the multi-parameter score was done with LASSO algorithm (least absolute shrinkage and selection operator) [@Tibshirani1996]. After discussions in the study team, involving a data scientist (Piotr Tymoszuk), we decided to abstain from predictive modeling in the revised manuscript. The primary reason for that was the low number of COVID-19 participants (n = `r mono_data$data_tbl %>% count(covid_status) %>% .$n %>% .[2]`) making the risk multi-parameter risk modeling highly ambiguous and sensitive to any changes in the gating strategy.
+
+In general, to make the analysis more comprehensive and reproducible, we introduced several changes. 
+First, we restrict, the analysis cohort to the uniform subset of the initially enrolled patients for which high quality flow cytometry data could be obtained (__Figure 1__).
+Second, Kruskal-Wallis test was used to identify cytometry features of interest differentially regulated between healthy controls, moderate and severe COVIV-19 patients (__Figure 2__). 
+Third, the p values were consistently corrected for multiple testing with the Benjamini-Hochberg method. 
+Fourth, correlation analysis of single cytometry features and markers of systemic inflammation were replaced by a more informative clustering analysis. 
+Finally, instead of predictive modeling, we focused on a potentially more interesting and reproducible interplay between myeloid immunity phenotype, inflammation and COVID-19 severity. To this end, we subjected the study participants to a clustering analysis in respect to all recorded flow cytometry variables (__Table S3__) using the self-organizing map (SOM) and hierarchical clustering technique (__Figure S9__) [@Kohonen1995; @Wehrens2018; @Vesanto2000]. Of note, such neuronal network-based technique is well suited for analysis of multi-dimensional data sets with multiple inter-correlated variables and was applied by in a similar setting in a recent paper from our division [@Sonnweber2022]. By this means, we could identify four distinct clusters of the study participants (__Figure 4__, __Figure S9C__): 
+
+* Cluster #1 consisting of predominantly (75%) healthy controls and moderate COVID-19 patients without pathological neutrophil expansion, preserved monocyte subset distribution as well as 'healthy-like' levels of myeloid CD64 and CD86. COVID-19 individuals assigned to this cluster had the lowest levels of serum inflammation markers IL6, CRP and neopterin (__Figure 5__).
+
+* Cluster #2 characterized by an upregulation of myeloid leukocyte CD86, monocyte CD163, expansion of non-classical monocytes. This cluster included both moderate and severe COVID-19 cases and substantially higher levels of neopterin and CRP than cluster #1 (__Figure 5__).
+
+* Cluster #3 included predominantly (73%) severe COVID-19 patients, displayed an upregulation of myeloid leukocyte CD64, monocyte CD40, CD71 and CD274 (PD-L1) and a depletion of non-classical monocytes along with high levels of IL6, CRP and neopterin (__Figure 5__).
+
+* Cluster #4 consisted almost exclusively of severe COVID-19 cases and was characterized by high levels of systemic inflammation, a strong expansion of neutrophils and an upregulation of neutrophil CD64.
+
+In addition, the above clusters tended to differ in iron turnover parameters. In particular, in the clusters #2, #3 and #4, low values of plasma iron and transferrin saturation were observed, suggestive of inflammatory iron restriction. Importantly, we could not find any evident differences in base demographic variables: age, sex distribution and body mass index between the clusters (__Table S4__). Cumulatively, we interpret these clusters as separate patterns of innate response to the pathogen and systemic inflammation which may be independent of the demographic background of the COVID-19 patient. In the discussion, we elaborate on the relation between the clusters and the patterns of adequate immune response (Cluster #1), immunoregulation or immunosuppression (Cluster #3), hyper-activation phenotype (Cluster #3) and emergency myelopoiesis (Cluster #4) described in the literature [@Silvin2020; @Schulte-Schrepping2020; @Christensen2021; @Kvedaraite2021].
+
+## Issue 3
+
+CD64 expression on neutrophils is a common known marker for detecting sepsis in patients (Ng et al., 2004; Sack, 2017). It can be up-regulated similarly with CD14 and TLRs. The authors should mention this, perhaps should also address the possibility of co-infections that can be occurring in moderate/severe patients, which could result in the increased CD64 expression. The authors may check the CD14 expression on neutrophils, which may partially address this.
+
+## Reply 3
+
+Thank you for this interesting point. As suggested, we have checked the neutrophil CD14 levels in healthy controls, moderate and severe COVID-19 (__Figure S5__). The CD14 expression was found to the highest in moderate COVID-19, yet since the expression was not controlled by isotype staining, the results may be interpreted with caution. The lowered neutrophil CD14 levels in severe COVID-19 may be a sign of emergency myelopoiesis and increased release of immature neutrophils into the circulation. In fact, low CD14 levels in pro-neutrophil-like cells were found in COVID-19 by Schulte-Schrepping and colleagues [@Schulte-Schrepping2020]. We discuss this phenomenon and mention the possibility of bacterial re-infections, especially in ventilated patients in the Discussion section of the revised manuscript.
+
+## Issue 4
+
+While HLA-DR, CD14, and CD16 labeling can be used to identify monocyte subsets, it is also known that HLA-DR expression can be downregulated during severe systemic inflammation, such as in COVID-19 infection. The main question is will the fact that the authors exclusively gated on HLA-DR^+^ cells for their analysis exclude some monocytes? A previous study (Silvin et al., 2020)  that is cited by the authors, specifically showed that HLA-DR^lo^ CD14^hi^ CD16^lo^ classical monocytes were detected in severe patients, suggesting a suppressive immune state. Do the authors see similar populations from their study? Additionally, why do non-classical monocytes gated (as shown in Figure 2A) appear to be CD14^+^ despite being previously described as CD14^-^?
+
+## Reply 4
+
+We also feel that this is an important point calling for clarification. Lowered HLA-DR levels in classical monocytes are indeed well documented in the literature in particular in severe COVID as compared with mild or moderate disease [@Schulte-Schrepping2020; @Silvin2020; @Christensen2021]. Hence, to overcome the limitations of monocyte detection based solely on HLA-DR expression, we re-analyzed the study flow cytometry data. In more detail, neutrophils were defined within the Lineage^-^ gate by logical AND gating of the CD11b^+^, CD62L^+^, CD16^+^ and SSC^hi^ cells. To identify monocytes in the non-neutrophil cells Lineage^-^ cells (logical NOT gating), UMAP (uniform manifold approximation and projection) [@McInnes2018; @Becht2018] dimensionality reduction algorithm with CD14, CD15, CD16, CD62L, CCR2, CX3CR1 and HLA-DR signals was applied. The monocyte cell cluster was identified by peaks of HLA-DR, CCR2, CX3CR1 and CD14 expression as compared with other non-neutrophil cell clusters (__Figure S1__). To gate the monocyte subsets, CD14, CD16, CCR2, CX3CR1, CD62L and CX3CR1 expression was analyzed (__Figure S2__). Hence, we are pretty confident that no monocytes were missed by our analysis strategy. Still, the most elegant and modern approach to the problem would be a consistent analysis of each sample with UMAP or FlowSOM, which was unfortunately computationally unfeasible (calculation time > 30 minutes per 2000000 event sample with the respective FlowJo plugins, total samples: `r nrow(mono_data$data_tbl)*10`).
+
+Furthermore, we compared mean fluorescence intensity values for monocyte subset backbone markers HLA-DR, CCR2 and CX3CR1 in classical, intermediate and non-classical monocytes from healthy, moderate and severe COVID-19 donors (__Figure S4__). In general the pattern of the marker regulation in the monocyte subsets was similar in the study group. Interestingly, we could not detect any consistent downregulation of HLA-DR in classical monocytes in COVID-19 as compared with healthy controls, instead HLA-DR tended to be higher in classical monocytes in moderate COVID-19 as compares with healthy controls or severe disease (three group comparison: p = 0.10, Kruskal-Wallis test, healthy median: 54000 [IQR: 48000 - 65000], moderate COVID-19 median: 90000 [IQR: 45000 - 140000], severe COVID-19 median: 45000 [IQR: 31000 - 58000]). This apparent discrepancy in light of literature evidence may be a result of differences timing of the blood sampling and/or technical differences in cytometry staining as discussed in the Discussion section of the revised manuscript.
+
+Interestingly, although no downregulation of classical HLA-DR in the investigated COVID-19 individuals could be observed, the participant cluster #2 identified by the SOM algorithm (__Figure 4__ and __Reply 2__) was characterized by the presence of CD86-, CD163-, CD279-expressing monocytes - a population which resembles the immature, immunoregulatory monocyte subset described by others [@Schulte-Schrepping2020; @Silvin2020; @Christensen2021; @Bost2021; @Penttila2021]. We elaborate on that in the Discussion section of the revised manuscript.
+
+Finally, the non-classical monocytes in samples measured in our laboratory are consistently measured CD14^low^ (please compare with [@Haschka2019]) and seem to be defined as such by Sylvin et al. [@Silvin2020]. Since we used other subset markers (CCR2, CX3CR1, HLA-DR, CD62L), we are confident, that the non-classical population corresponds to the non-classical subset described in the literature [@Wong2011].
+
+## Issue 5
+
+The authors used flow cytometry to identify neutrophils based on SSC and CD15 expression (Supplementary Figure S2). Technically, this is not entirely correct, as CD15 is a generic granulocyte marker and its expression level may vary in response to inflammation. CD15 is expressed by neutrophils, eosinophils, and even basophils, and their numbers may change during SARS-CoV2 infection. The authors should utilize CD11b, CD62L and CD16 (already in the panel) to identify neutrophils more specifically.
+
+## Reply 5
+
+We understand the issue. To address that, we defined neutrophils within the Lineage^-^ subset by logical AND gating of the the CD11b^+^, CD62L^+^, CD16^+^ and SSC^hi^ cells. Please refer to __Reply 4__ and __Figure S1__ for details.
+
+## Issue 6
+
+Typo in the subtitle "Alterations in meyloid leukocyte cellularity and phenotype may predict severe disease course", should be Myeloid.
+
+## Reply 6
+
+We apologize for the typo. The section was removed anyway from the revised manuscript (see: __Reply 2__, __Reviewer 1__)
+
+\newpage
+
+# Reviewer 2
+
+We would like to thank the reviewer for the careful study of the manuscirpt and excellent feedback.
+
+## Issue 1
+
+The details of analysis inclusion scheme are given as supplementary Figure S1, however it would be better to use as a main figure, to follow the exact sample numbers involved in the study. 
+
+## Reply 1
+
+We understand the point and have moved the study inclusion scheme to the main figures as suggested (__Figure 1__).
+
+## Issue 2
+
+There is a big age difference between moderate and severe COVID-19 patients. In this point what about the healthy individual characteristics included in the study? There is no information.
+
+## Resply 2
+
+We apologize for not providing the demographic and clinical information on healthy controls. In the revised manuscript, we provide the available data on healthy blood donors (__Table S1__). We agree with the Reviewer, that there are large and significant differences in age between the study groups and discuss it now as a study limitation. At the same time, the clustering results shown in __Figure 4__, clinical characteristic of the participant clusters (__Table S4__) and, especially no significant differences in median age between the clusters, suggest that age was not a relevant co-variate of the innate immune response patterns in the investigated time window of COVID-19. The age difference between moderate and severe COVID-19 patients likely pertains to the age as a known risk factor of severe disease and death. We elaborate on that in the Discussion section of the revised manuscript.
+
+## Issue 3
+
+In complete study data set Table S5, some of the parameters are showing heterogeneity. The patients having high/low WBC, IL-6 or ferritin could have something different? 
+
+## Reply 3
+
+This is an interesting question. Multiple papers cited in the manuscript report on heterogeneous inflammatory response to COVID-19 involving both immune hyper-activation and/or immunosuppression [@Silvin2020; @Schulte-Schrepping2020; @Christensen2021; @Kvedaraite2021]. To investigate that in the study cohort, we subjected the participants to self-organizing map (SOM) clustering in respect to the myeloid leukocyte parameters obtained by out flow cytometry strategy. As described in more detail in __Reply 4__ to the __Reviewer 1__, we could identify four participant clusters differing in the quantity and surface phenotype of monocytes and neutrophils and tended to differ in the levels of inflammation and iron parameters (__Figure 4__ and __5__). The presence of such clusters suggests, that the immune response to the SARS-CoV-2 pathogen follows distinct patterns which may pertain to the hyper-activated, immunosuppressive and emergency myelopeiesis phenotypes described in the literature. We discuss that point in the Discussion section of the revised manuscript.
+
+## Issue 4
+
+It would be better to give some more details for the measurement of the laboratory inflammation markers in the text.
+
+## Response 4
+
+We thank the Reviewer for rasing this important point. We provide more details laboratory measurements in Methods of the revised manuscript (David: könntest Du sie bitte aussuchen? Danke!)
+
+## Issue 5
+
+Even the small numbers of participants are the limitation of the study, the results were given in details and presented with main and supplementary tables and figures, some of them can be reduced, however the study will shed light on future studies.
+
+## Response 5
+
+We thank the Reviewer for appreciation of our work! As suggested, we have simplified the analysis pipeline (see: __Reply 2__, __Reviewer 1__) and moved figures with particular significantly regulated cytometry features (CD64, CD86, neutrophil, Lineage^-^ and NLR) to Supplementary Material. In addition, the Result part of the text was shortened to meet the journal's word limit.
+
+\newpage
+
+# References

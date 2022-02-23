@@ -1,0 +1,88 @@
+```{r fig-gating-strategy, fig.width = 7.086614166, fig.height = 7.3228346382, fig.cap = 'Gating strategy and identification of blood neutrophils and monocytes.'}
+
+suppl_figures$gating_strategy$plot
+
+```
+
+__Figure \@ref(fig:fig-gating-strategy). Gating strategy and identification of blood neutrophils and monocytes.__
+
+
+
+```{r fig-monocyte-subsets, fig.width = 7.086614166, fig.height = 4.0551181061, fig.cap = 'Identification of blood monocyte subsets.'}
+
+suppl_figures$monocyte_subsets$plot
+
+```
+
+__Figure \@ref(fig:fig-monocyte-subsets). Identification of blood monocyte subsets.__
+
+
+
+```{r fig-systemic-inflammation, fig.width = 7.086614166, fig.height = 5.511811018, fig.cap = 'Systemic inflammation and iron turnover markers in hospitalized COVID-19 subjects.'}
+
+suppl_figures$systemic_inflammation$plot
+
+```
+
+__Figure \@ref(fig:fig-systemic-inflammation). Systemic inflammation and iron turnover markers in hospitalized COVID-19 subjects.__
+
+
+
+```{r fig-backbone, fig.width = 7.086614166, fig.height = 7.086614166, fig.cap = 'Regulation of the monocyte subset markers HLA-DR, CCR2 and CX3CR1 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$backbone$plot
+
+```
+
+__Figure \@ref(fig:fig-backbone). Regulation of the monocyte subset markers HLA-DR, CCR2 and CX3CR1 in healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-cd14, fig.width = 7.086614166, fig.height = 3.543307083, fig.cap = 'Regulation of neutrophil CD14 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$cd14$plot
+
+```
+
+__Figure \@ref(fig:fig-cd14). Regulation of neutrophil CD14 in healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-cell-inflammation, fig.width = 7.086614166, fig.height = 8.661417314, fig.cap = 'Cytometry markers of myeloid leukocyte expansion in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$cell_inflammation$plot
+
+```
+
+__Figure \@ref(fig:fig-cell-inflammation). Cytometry markers of myeloid leukocyte expansion in healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-myeloid-cd64, fig.width = 7.086614166, fig.height = 8.661417314, fig.cap = 'Regulation of myeloid leukocyte CD64 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$myeloid_cd64$plot
+
+```
+
+__Figure \@ref(fig:fig-myeloid-cd64). Regulation of myeloid leukocyte CD64 in healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-myeloid-cd86, fig.width = 7.086614166, fig.height = 5.7086614115, fig.cap = 'Regulation of monocyte CD86 in healthy controls, moderate and severe COVID-19.'}
+
+suppl_figures$myeloid_cd86$plot
+
+```
+
+__Figure \@ref(fig:fig-myeloid-cd86). Regulation of monocyte CD86 in healthy controls, moderate and severe COVID-19.__
+
+
+
+```{r fig-cluster-qc, fig.width = 7.086614166, fig.height = 8.661417314, fig.cap = 'Training and clusterin of self-organizing maps.'}
+
+suppl_figures$cluster_qc$plot
+
+```
+
+__Figure \@ref(fig:fig-cluster-qc). Training and clusterin of self-organizing maps.__
+
