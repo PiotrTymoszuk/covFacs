@@ -275,7 +275,7 @@
                                         plot(cyto_clust$part_object, 
                                              type = 'training', 
                                              cust_theme = proj_globals$common_theme)$observation + 
-                                          labs(title = 'Cytometry features: SOM training') + 
+                                          labs(title = 'Participants: SOM training') + 
                                           theme(plot.subtitle = element_blank(), 
                                                 plot.tag = element_blank()), 
                                         cyto_clust$ft_diagnostic$diagn_plots$node$wss + 
