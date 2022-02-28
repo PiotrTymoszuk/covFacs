@@ -1,5 +1,5 @@
 ---
-title: "Early alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in COVID-19 inpatients"
+title: "Alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in COVID-19 inpatients"
 subtitle: "Supplementary Material"
 author: ""
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
@@ -157,7 +157,7 @@ suppl_figures$systemic_inflammation$plot
 
 __Supplementary Figure S\@ref(fig:fig-systemic-inflammation). Systemic inflammation and iron turnover markers in hospitalized COVID-19 subjects.__
 
-Markers of systemic inflammation (__A__): C-reactive protein (CRP), interleukin-6 (IL6), neopterin, and iron turnover (__B__): ferritin, iron and transferrin saturation (TF-Sat), were determined in serum of moderate and severe COVID-19 study participants at hospital admission. Statistical significance was determined by Mann-Whitney U test with Benjamini-Hochberg adjustment for multiple testing. P values are indicated in the plot sub-heading, numbers of complete observations are presented next to the plots. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range. Blue dashed lines represent the normal range of the parameter.
+Markers of systemic inflammation (__A__): C-reactive protein (CRP), interleukin-6 (IL6), neopterin, and iron turnover (__B__): ferritin, iron and transferrin saturation (TF-Sat), were determined in plasma of moderate and severe COVID-19 study participants at hospital admission. Statistical significance was determined by Mann-Whitney U test with Benjamini-Hochberg adjustment for multiple testing. P values are indicated in the plot sub-heading, numbers of complete observations are presented next to the plots. Each point represents a single observation, boxes represent medians with interquartile range (IQR), whiskers span over the 150% IQR range. Blue dashed lines represent the normal range of the parameter.
 
 \newpage
 

@@ -1,5 +1,5 @@
 ---
-title: "Early alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in COVID-19 inpatients"
+title: "Alterations of blood monocyte subset distribution and surface phenotype are linked to infection severity in COVID-19 inpatients"
 subtitle: "Point-to-Point Reply"
 author: ""
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
