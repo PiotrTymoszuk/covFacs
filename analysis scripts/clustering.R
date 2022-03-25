@@ -62,7 +62,7 @@
   
   cyto_clust$ft_diagnostic <- list(diagn_plots = function(x) plot(x, cust_theme = proj_globals$common_theme), 
                                    variance = var, 
-                                   cv = function(x) cv(x, nfolds = 10, nearest_n = 5)) %>% 
+                                   cv = function(x) cv(x, nfolds = 10, kNN = 5)) %>% 
     map(~.x(cyto_clust$ft_object))
   
   ## renaming of the clusters: reader-friendly names
@@ -98,8 +98,8 @@
   ## variance and cross-validation error
   
   cyto_clust$part_diagnostic <- list(diagn_plots = function(x) plot(x, cust_theme = proj_globals$common_theme), 
-                                   variance = var, 
-                                   cv = function(x) cv(x, nfolds = 10, nearest_n = 5)) %>% 
+                                     variance = var, 
+                                     cv = function(x) cv(x, nfolds = 10, kNN = 5)) %>% 
     map(~.x(cyto_clust$part_object))
   
   ## renaming of the clusters
@@ -119,8 +119,8 @@
   
   insert_msg('Plotting of the clustering results as a heat map')
   
-  cyto_clust$heat_map <- plot_clust_hm(sample_clust_object = cyto_clust$part_object, 
-                                       feature_clust_object = cyto_clust$ft_object, 
+  cyto_clust$heat_map <- plot_clust_hm(x_object = cyto_clust$part_object, 
+                                       y_object = cyto_clust$ft_object, 
                                        cust_theme = proj_globals$common_theme, 
                                        plot_title = 'Participant and cytometry feature clustering', 
                                        plot_subtitle = 'Self-organizing map/HCl', 

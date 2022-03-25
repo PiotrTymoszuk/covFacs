@@ -5,10 +5,11 @@
   insert_head()
 
   library(exda)
+  library(somKernels)
+  library(clustTools)
 
   c('globals_setup.R', 
-    './tools/project_tools.R', 
-    './tools/clust_tools2.R') %>% 
+    './tools/project_tools.R') %>% 
     source_all(message = TRUE, crash = TRUE)
 
 # executable scripts ------

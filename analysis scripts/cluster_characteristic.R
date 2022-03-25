@@ -29,6 +29,7 @@
   ## n numbers
   
   clust_chara$n_numbers <- clust_chara$analysis_tbl %>% 
+    filter(sev_paper %in% c('moderate', 'severe')) %>% 
     count(clust_id)
   
   
@@ -80,6 +81,7 @@
                  clust_4 = clust_chara$n_numbers$n[4]), .) %>% 
     map_dfc(stri_replace, regex = '\\nComplete.*$', replacement = '') %>% 
     map_dfc(stri_replace, regex = 'no:.*\\nyes:\\s{1}', replacement = '') %>% 
+    map_dfc(stri_replace, regex = '^no: 100%.*', replacement = '0% (0)') %>% 
     map_dfc(stri_replace_all, fixed = '% (', replacement = '% (n = ')
   
 # Kruskal-Wallis and Chi-squared tests ------
@@ -130,7 +132,7 @@
                                  clust_chara$result_tbl[c('variable', 'significance_post')]) %>% 
     reduce(left_join, by = 'variable') %>% 
     mutate(variable = translate_var(variable, type = 'plot_lab'), 
-           variable = ifelse(is.na(variable), 'COVID-19 severity', variable))
+           variable = ifelse(is.na(variable), 'N COVID-19 patients', variable))
   
 # Summary plots: inflammatory and iron parameters ------
   
